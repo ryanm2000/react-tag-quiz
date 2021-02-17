@@ -1,0 +1,37 @@
+{
+  "name": "react-tag-quiz",
+  "version": "0.0.1",
+  "description": "A react quiz interface that will collect the answers, run them through a function of your choice and display the result to the user.",
+  "main": "dist/prod.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepublishOnly": "npm run release",
+    "build": "npm run build:dev && npm run build:prod",
+    "release": "npm version patch;npm run build:dev && npm run build:prod",
+    "build:prod": "NODE_ENV=production rollup -c",
+    "build:dev": "NODE_ENV=development rollup -c",
+    "start": "NODE_ENV=development rollup -c -w | NODE_ENV=production rollup -c -w"
+  },
+  "author": "Ryan Margheriti <npm@ryanmargheriti.dev>",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/runtime": "^7.12.13"
+  },
+  "peerDependencies": {
+    "react": ">= 16.14.0",
+    "react-dom": ">= 16.14.0",
+    "styled-components": "^5.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/plugin-transform-runtime": "^7.12.15",
+    "@babel/preset-env": "^7.12.16",
+    "@babel/preset-react": "^7.12.13",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^17.1.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-replace": "^2.3.4"
+  }
+}
