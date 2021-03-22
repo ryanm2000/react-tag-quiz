@@ -148,13 +148,16 @@ export default function Questionnaire({
     console.log("setting up ref");
     return useRef(null);
   });
-  const resultsRef = useRef(null)
+  const resultsRef = useRef(null);
 
   const scrollToSection = (section) => {
-    if(typeof section === 'number') {
+    if (typeof section === "number") {
       return scrollToRef(questionRefs[section]);
     }
-    return scrollToRef(resultsRef)
+  };
+
+  const scrollToResults = () => {
+    return scrollToRef(resultsRef);
   };
 
   const handleFinishAction = () => {
@@ -164,6 +167,7 @@ export default function Questionnaire({
         .then((results) => {
           setResults(results);
           updateFormStep("finished");
+          scrollToResults()
         })
         .catch(() => {
           updateFormStep("error");
@@ -196,7 +200,7 @@ export default function Questionnaire({
   if (formStep === "finished") {
     return (
       <Wrapper theme={theme}>
-        <Section isActive={true} height={height} theme={theme}>
+        <Section isActive={true} height={height} theme={theme} ref={resultsRef}>
           <ResultsComponent results={results} />
         </Section>
       </Wrapper>
@@ -260,14 +264,7 @@ export default function Questionnaire({
                 })}
               </OptionList>
               {index >= formData.questions.length - 1 ? (
-                <Button
-                  onClick={() => {
-                    scrollToResults();
-                    handleFinishAction();
-                  }}
-                >
-                  {finishLabel}
-                </Button>
+                <Button onClick={handleFinishAction}>{finishLabel}</Button>
               ) : (
                 <Button
                   onClick={() => {
