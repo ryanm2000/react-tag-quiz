@@ -228,7 +228,7 @@ export default function Questionnaire({
               height={height}
               theme={theme}
               key={index}
-              ref={refs[index]}
+              ref={questionRefs[index]}
             >
               <h1>{question.label}</h1>
               {!!maxSelections && !currentCount && (
