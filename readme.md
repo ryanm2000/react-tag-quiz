@@ -1,3 +1,5 @@
+UI to create a series of questions with multiple choice answers that get fed into a simple function that outputs the results. BYO function.
+
 # Installation
 - `npm install react-tag-quiz`
 - `import Quiz from 'react-tag-quiz`
