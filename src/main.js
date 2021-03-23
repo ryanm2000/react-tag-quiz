@@ -278,17 +278,6 @@ export default function Questionnaire({
             </Section>
           );
         })}
-
-        <p>
-          <small>
-            Selected tags:
-            {Object.keys(values).map((key, index) => {
-              return values[key]
-                ? ` ${key}${Object.keys(values).length > index ? "," : "."}`
-                : null;
-            })}
-          </small>
-        </p>
       </Form>
     </Wrapper>
   );
