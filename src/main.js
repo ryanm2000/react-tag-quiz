@@ -35,7 +35,7 @@ const DisplayOption = styled.div`
   padding: 1em 2.5em;
 
   input:checked + &,
-  &:hover {
+  input:enabled &:hover {
     background-color: ${(p) => p.theme.color.foreground};
     border-color: ${(p) => p.theme.color.foreground};
     color: ${(p) => p.theme.color.background};
