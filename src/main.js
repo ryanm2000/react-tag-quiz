@@ -168,13 +168,17 @@ export default function Questionnaire({
         .then((results) => {
           setResults(results);
           updateFormStep("finished");
-          scrollToResults()
+          scrollToResults();
         })
         .catch(() => {
           updateFormStep("error");
         });
     }
   };
+
+  const handleRestartAction = () => {
+    updateFormStep(-1);
+  }
 
   if (formStep === -1) {
     return (
@@ -203,6 +207,23 @@ export default function Questionnaire({
       <Wrapper theme={theme}>
         <Section isActive={true} height={height} theme={theme} ref={resultsRef}>
           <ResultsComponent results={results} />
+          <Button onClick={handleRestartAction}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke={theme.color.foreground}
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M19.95 11a8 8 0 1 0 -.5 4m.5 5v-5h-5" />
+            </svg>
+            <span style={{ marginLeft: "12px" }}>Start again</span>
+          </Button>
         </Section>
       </Wrapper>
     );
