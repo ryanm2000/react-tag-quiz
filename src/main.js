@@ -26,6 +26,7 @@ const DisplayOptionWrapper = styled.label`
 `;
 
 const DisplayOption = styled.div`
+  background-color: ${(p) => p.theme.color.background};
   border-radius: 2em;
   border: solid currentColor 1px;
   color: currentColor;
@@ -35,7 +36,7 @@ const DisplayOption = styled.div`
 
   input:checked + &,
   &:hover {
-    background: ${(p) => p.theme.color.foreground};
+    background-color: ${(p) => p.theme.color.foreground};
     border-color: ${(p) => p.theme.color.foreground};
     color: ${(p) => p.theme.color.background};
   }
