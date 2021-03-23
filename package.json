@@ -1,6 +1,6 @@
 {
   "name": "react-tag-quiz",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "A react quiz interface that will collect the answers, run them through a function of your choice and display the result to the user.",
   "main": "dist/prod.js",
   "files": [
