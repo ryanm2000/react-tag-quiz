@@ -150,7 +150,6 @@ export default function Questionnaire({
     return useRef(null);
   });
   const resultsRef = useRef(null);
-  const loadingRef = useRef(null);
 
   const scrollToSection = (section) => {
     if (typeof section === "number") {
@@ -162,13 +161,8 @@ export default function Questionnaire({
     return scrollToRef(resultsRef);
   };
 
-  const scrollToLoading = () => {
-    return scrollToRef(loadingRef);
-  };
-
   const handleFinishAction = () => {
     updateFormStep("loading");
-    scrollToLoading()
     if (typeof getResultsFn === "function") {
       getResultsFn(values)
         .then((results) => {
@@ -197,7 +191,7 @@ export default function Questionnaire({
   if (formStep === "loading") {
     return (
       <Wrapper theme={theme}>
-        <Section isActive={true} height={height} theme={theme} ref={loadingRef}>
+        <Section isActive={true} height={height} theme={theme}>
           <h1>{loadingMessage}</h1>
         </Section>
       </Wrapper>
