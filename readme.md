@@ -44,6 +44,7 @@ Prop Name | Type | Default
 `height` | String | "65vh"
 `resultsComponent` | Component | ?
 `theme` | Object | <code lang="json">{}</code>
+`resetSelectionsOnRestart` | Boolean | true
 
 
 ### Developing locally

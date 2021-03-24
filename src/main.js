@@ -101,6 +101,7 @@ export default function Questionnaire({
   getResultsFn = defaults.getResultsFn,
   resultsComponent = defaults.resultsComponent,
   theme = {},
+  resetSelectionsOnRestart = true,
 }) {
   const useForm = (initialValues = {}) => {
     const [values, setValues] = useState(initialValues);
@@ -113,7 +114,10 @@ export default function Questionnaire({
     const handleSubmit = (ev) => {
       return ev.preventDefault();
     };
-    return { values, handleChange, handleSubmit };
+    const resetForm = () => {
+      setValues(initialValues)
+    }
+    return { values, handleChange, handleSubmit, resetForm };
   };
 
   const useCounters = () => {
@@ -135,7 +139,7 @@ export default function Questionnaire({
     return { counters, handleCounterChange, getCurrentCount };
   };
 
-  const { values, handleChange, handleSubmit } = useForm();
+  const { values, handleChange, handleSubmit, resetForm } = useForm();
   const { counters, handleCounterChange, getCurrentCount } = useCounters();
   const [results, setResults] = useState([]);
   const [formStep, updateFormStep] = useState(-1);
@@ -146,7 +150,6 @@ export default function Questionnaire({
 
   // Setup the refs to use for auto-scrolling
   const questionRefs = formData.questions.map(() => {
-    console.log("setting up ref");
     return useRef(null);
   });
   const resultsRef = useRef(null);
@@ -177,6 +180,9 @@ export default function Questionnaire({
   };
 
   const handleRestartAction = () => {
+    if(resetSelectionsOnRestart) {
+      resetForm()
+    }
     updateFormStep(-1);
   }
 
