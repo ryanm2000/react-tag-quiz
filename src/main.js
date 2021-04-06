@@ -138,11 +138,14 @@ export default function Questionnaire({
     const getCurrentCount = (id) => {
       return counters[id] || 0;
     };
-    return { counters, handleCounterChange, getCurrentCount };
+    const resetCounters = () => {
+      setCounters({})
+    }
+    return { counters, handleCounterChange, getCurrentCount, resetCounters };
   };
 
   const { values, handleChange, handleSubmit, resetForm } = useForm();
-  const { counters, handleCounterChange, getCurrentCount } = useCounters();
+  const { counters, handleCounterChange, getCurrentCount, resetCounters } = useCounters();
   const [results, setResults] = useState([]);
   const [formStep, updateFormStep] = useState(-1);
   // Make the components titlecase, for stylistic purposes only
@@ -184,6 +187,7 @@ export default function Questionnaire({
   const handleRestartAction = () => {
     if(resetSelectionsOnRestart) {
       resetForm()
+      resetCounters()
     }
     updateFormStep(-1);
   }
