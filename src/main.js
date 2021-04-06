@@ -215,7 +215,7 @@ export default function Questionnaire({
       <Wrapper theme={theme}>
         <Section isActive={true} height={height} theme={theme} ref={resultsRef}>
           <ResultsComponent results={results} />
-          <RestartButton onClick={handleRestartAction}>
+          <RestartButton onClick={handleRestartAction} theme={theme}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
