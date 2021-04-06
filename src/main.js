@@ -46,6 +46,8 @@ const DisplayOption = styled.div`
   }
 `;
 
+const RestartButton = styled(DisplayOption)``
+
 const Section = styled.div`
   align-items: center;
   display: ${(p) => (p.isActive ? "flex" : "none")};
@@ -213,7 +215,7 @@ export default function Questionnaire({
       <Wrapper theme={theme}>
         <Section isActive={true} height={height} theme={theme} ref={resultsRef}>
           <ResultsComponent results={results} />
-          <Button onClick={handleRestartAction}>
+          <RestartButton onClick={handleRestartAction}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -229,7 +231,7 @@ export default function Questionnaire({
               <path d="M19.95 11a8 8 0 1 0 -.5 4m.5 5v-5h-5" />
             </svg>
             <span style={{ marginLeft: "12px" }}>Start again</span>
-          </Button>
+          </RestartButton>
         </Section>
       </Wrapper>
     );
