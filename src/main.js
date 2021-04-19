@@ -80,14 +80,20 @@ const Form = styled.form``;
 
 const DefaultButton = styled.button``;
 
-const scrollToRef = (ref) => {
+const scrollTo = (top = 0) => {
   if (typeof window !== "undefined") {
-    const top = ref.current.offsetTop;
     window.scrollTo({
       top,
       left: 0,
       behavior: "smooth",
     });
+  }
+}
+
+const scrollToRef = (ref) => {
+  if (typeof window !== "undefined") {
+    const top = ref.current.offsetTop;
+    scrollTo(top)
   }
 };
 
@@ -184,10 +190,16 @@ export default function Questionnaire({
     }
   };
 
+  const handleStartAction = () => {
+    updateFormStep(0);
+    scrollTo(0)
+  }
+
   const handleRestartAction = () => {
     if(resetSelectionsOnRestart) {
       resetForm()
       resetCounters()
+      scrollTo(0)
     }
     updateFormStep(-1);
   }
@@ -197,7 +209,7 @@ export default function Questionnaire({
       <Wrapper theme={theme}>
         <Section isActive={true} height={height} theme={theme}>
           <IntroComponent>
-            <Button onClick={() => updateFormStep(0)}>{startLabel}</Button>
+            <Button onClick={handleStartAction}>{startLabel}</Button>
           </IntroComponent>
         </Section>
       </Wrapper>

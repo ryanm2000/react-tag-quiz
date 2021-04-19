@@ -38,12 +38,12 @@ export default [
     input: "demo/index.js",
     output: [
       {
+        exports: "named",
         file: "dist/sample/index.js",
         format: "iife",
-        exports: "named",
+        globals:['styled'],
         sourcemap: true,
         strict: false,
-        globals:['styled'],
       }
     ],
     // external: ["react", "react-dom", "styled-components", /@babel\/runtime/],
